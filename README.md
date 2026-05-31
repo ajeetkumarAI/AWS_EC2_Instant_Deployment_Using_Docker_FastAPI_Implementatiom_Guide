@@ -208,7 +208,7 @@ This will return a URI like: `123456789012.dkr.ecr.ap-south-1.amazonaws.com/fast
 
 ```bash
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 417780655856.dkr.ecr.us-east-1.amazonaws.com
-aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 123456789012.dkr.ecr.ap-south-1.amazonaws.com
+#aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 123456789012.dkr.ecr.ap-south-1.amazonaws.com
 ```
 
 ### Step 4 — Tag & Push the Image
@@ -237,10 +237,11 @@ aws configure
 
 # Login to ECR
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 417780655856.dkr.ecr.us-east-1.amazonaws.com
-aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 123456789012.dkr.ecr.ap-south-1.amazonaws.com
+#aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 123456789012.dkr.ecr.ap-south-1.amazonaws.com
 
 # Pull the image
-docker pull 123456789012.dkr.ecr.ap-south-1.amazonaws.com/fastapi-insurance:latest
+docker pull 123456789012.dkr.ecr.us-east-1.amazonaws.com/fastapi-insurance:latest
+#docker pull 123456789012.dkr.ecr.ap-south-1.amazonaws.com/fastapi-insurance:latest
 
 # Run
 docker run -d -p 8000:8000 --name fastapi-app --restart unless-stopped 123456789012.dkr.ecr.ap-south-1.amazonaws.com/fastapi-insurance:latest
