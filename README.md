@@ -1,8 +1,6 @@
 # AWS_EC2_Instant_Deployment_Using_Docker_FastAPI_Implementatiom_Guide
 
-# Deploy FastAPI + Docker on AWS EC2
-
-This guide is tailored to your repo: **medical-insurance-price_pred-azure-deployment-using-fastapi-docker**
+# Deploy FastAPI + Docker on AWS EC2 using one of AI/ML project
 
 Your app runs on **port 8000** via `uvicorn app:app --host 0.0.0.0 --port 8000`.
 
