@@ -44,7 +44,22 @@ exit
 
 Then SSH back in.
 
-### Step 4 — Clone Your Repo & Build
+
+
+Step 4: Create and Activate a Virtual Environment
+
+# Create a Python virtual environment named 'venv'
+```bash
+python3 -m venv venv
+ ```
+
+# Activate the virtual environment
+# All pip installs will now go into venv/ instead of system Python
+```bash
+source venv/bin/activate
+```
+
+### Step 5 — Clone Your Repo & Build
 
 ```bash
 git clone https://github.com/ajeetkumarAI/medical-insurance-price_pred-azure-deployment-using-fastapi-docker.git
@@ -53,13 +68,13 @@ cd medical-insurance-price_pred-azure-deployment-using-fastapi-docker
 docker build -t fastapi-insurance:latest .
 ```
 
-### Step 5 — Run the Container
+### Step 6 — Run the Container
 
 ```bash
 docker run -d -p 8000:8000 --name fastapi-app --restart unless-stopped fastapi-insurance:latest
 ```
 
-### Step 6 — Access Your App
+### Step 7 — Access Your App
 
 Open in browser:
 ```
