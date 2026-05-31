@@ -42,6 +42,8 @@ ssh -i your-key.pem ubuntu@<EC2-PUBLIC-IP>
 # (gets the latest info about available packages and versions)
 sudo apt-get update
 
+# sudo = run command with admin/root privileges
+
 # Install Docker Engine package (-y means auto-confirm "yes")
 sudo apt-get install -y docker.io
 
@@ -52,8 +54,7 @@ sudo systemctl start docker
 # Enable Docker to start automatically whenever the server reboots
 sudo systemctl enable docker
 
-# Add user 'ubuntu' to the docker group
-# so that user can run docker commands without using sudo every time
+# Add ubuntu user to docker group to run docker without sudo
 sudo usermod -aG docker ubuntu
 
 # Log out and back in for group change to take effect
