@@ -91,12 +91,109 @@ This is the AWS equivalent of your Azure workflow (`az acr login` → `docker pu
 
 ### Step 1 — Install AWS CLI (on your local machine)
 
+Here is the updated README content with both Windows and Linux AWS CLI installation methods included and formatted cleanly:
+
+# Step 1 — Install AWS CLI
+
+Before running the project, install and configure AWS CLI on your local machine.
+
+## Windows Installation
+
+### Requirements
+
+* Microsoft-supported 64-bit Windows version
+* Administrator rights to install software
+
+### Install AWS CLI
+
+Download and run the AWS CLI MSI installer:
+
+```bash
+https://awscli.amazonaws.com/AWSCLIV2.msi
+```
+
+Or install using `msiexec` from Command Prompt:
+
+```cmd
+C:\> msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi
+```
+
+For silent installation:
+
+```cmd
+C:\> msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi /qn
+```
+
+### Verify Installation
+
+Open Command Prompt and run:
+
+```cmd
+C:\> aws --version
+```
+
+Example output:
+
+```bash
+aws-cli/2.27.41 Python/3.11.6 Windows/10 exe/AMD64 prompt/off
+```
+
+If Windows cannot find the command, close and reopen the terminal to refresh the PATH.
+
+### Configure AWS Credentials
+
+```cmd
+aws configure
+```
+
+Enter:
+
+```text
+AWS Access Key ID
+AWS Secret Access Key
+Default region name (example: ap-south-1)
+Default output format (json)
+```
+
+---
+
+## Linux Installation
+
+### Install AWS CLI
+
 ```bash
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+
 unzip awscliv2.zip
+
 sudo ./aws/install
+```
+
+### Verify Installation
+
+```bash
+aws --version
+```
+
+Example output:
+
+```bash
+aws-cli/2.x.x Python/3.x Linux/x86_64
+```
+
+### Configure AWS Credentials
+
+```bash
 aws configure
-# Enter: AWS Access Key ID, Secret Access Key, Region (e.g., ap-south-1), Output format (json)
+```
+
+Enter:
+
+```text
+AWS Access Key ID
+AWS Secret Access Key
+Default region name (example: ap-south-1)
+Default output format (json)
 ```
 
 ### Step 2 — Create an ECR Repository
@@ -110,6 +207,7 @@ This will return a URI like: `123456789012.dkr.ecr.ap-south-1.amazonaws.com/fast
 ### Step 3 — Authenticate Docker to ECR
 
 ```bash
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 417780655856.dkr.ecr.us-east-1.amazonaws.com
 aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 123456789012.dkr.ecr.ap-south-1.amazonaws.com
 ```
 
