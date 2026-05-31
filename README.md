@@ -38,10 +38,22 @@ ssh -i your-key.pem ubuntu@<EC2-PUBLIC-IP>
 ### Step 3 — Install Docker on EC2
 
 ```bash
+# Update the package list from Ubuntu repositories
+# (gets the latest info about available packages and versions)
 sudo apt-get update
+
+# Install Docker Engine package (-y means auto-confirm "yes")
 sudo apt-get install -y docker.io
+
+# Start the Docker service right now
+# so Docker daemon begins running immediately
 sudo systemctl start docker
+
+# Enable Docker to start automatically whenever the server reboots
 sudo systemctl enable docker
+
+# Add user 'ubuntu' to the docker group
+# so that user can run docker commands without using sudo every time
 sudo usermod -aG docker ubuntu
 
 # Log out and back in for group change to take effect
